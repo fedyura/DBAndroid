@@ -24,9 +24,9 @@
         </activity>
         
         <provider
-            android:name=".contentprovider.CustomContentProvider"
-            android:authorities="com.github.fedyura.CustomContentProvider"
-            android:exported="false" >
+            android:name="com.github.fedyura.technopark_db.CustomContentProvider"
+            android:authorities="com.github.fedyura.technopark_db.CustomContentProvider"
+            android:exported="false">
         </provider>
     </application>
 

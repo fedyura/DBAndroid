@@ -1,8 +1,8 @@
-package com.github.fedyura.TechnoparkDB;
+package com.github.fedyura.technopark_db;
 
-import com.github.fedyura.TechnoparkDB.TechnoparkContract.Journal;
-import com.github.fedyura.TechnoparkDB.TechnoparkContract.TPDiscipline;
-import com.github.fedyura.TechnoparkDB.TechnoparkContract.TPStudent;
+import com.github.fedyura.technopark_db.TechnoparkContract.Journal;
+import com.github.fedyura.technopark_db.TechnoparkContract.TPDiscipline;
+import com.github.fedyura.technopark_db.TechnoparkContract.TPStudent;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,8 +23,8 @@ public class TechnoparkDBHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		
 		TPStudent.onCreate(db);
-		TPDiscipline.onCreate(db);
-		Journal.onCreate(db);
+		//TPDiscipline.onCreate(db);
+		//Journal.onCreate(db);
 		TechnoparkContract.InsertData(db);
 	}
 
@@ -32,8 +32,8 @@ public class TechnoparkDBHelper extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		
 		TPStudent.onUpgrade(db, oldVersion, newVersion);
-		TPDiscipline.onUpgrade(db, oldVersion, newVersion);
-		Journal.onUpgrade(db, oldVersion, newVersion);
+		//TPDiscipline.onUpgrade(db, oldVersion, newVersion);
+		//Journal.onUpgrade(db, oldVersion, newVersion);
 		onCreate(db);
 		TechnoparkContract.InsertData(db);
 	}
@@ -41,5 +41,13 @@ public class TechnoparkDBHelper extends SQLiteOpenHelper {
 	public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         
 		onUpgrade(db, oldVersion, newVersion);
+    }
+	
+	@Override
+    public void close(){
+        
+		getReadableDatabase().close();
+        getWritableDatabase().close();
+        super.close();
     }
 }

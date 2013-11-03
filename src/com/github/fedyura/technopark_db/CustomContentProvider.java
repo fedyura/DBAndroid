@@ -1,4 +1,4 @@
-package com.github.fedyura.TechnoparkDB;
+package com.github.fedyura.technopark_db;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -14,7 +14,7 @@ public class CustomContentProvider extends ContentProvider {
 	private TechnoparkDBHelper TPDBHelper;
 	
 	//user for uri
-	public static final String AUTHORITY = "com.github.fedyura.CustomContentProvider";
+	public static final String AUTHORITY = "com.github.fedyura.technopark_db.CustomContentProvider";
 	private static final int STUDENTS = 0, DISCIPLINES = 1;
 	
 	private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -22,7 +22,6 @@ public class CustomContentProvider extends ContentProvider {
 	    uriMatcher.addURI(AUTHORITY, TechnoparkContract.TPStudent.TABLE_NAME, STUDENTS);
 	    uriMatcher.addURI(AUTHORITY, TechnoparkContract.TPDiscipline.TABLE_NAME, DISCIPLINES);
 	  }
-	
 	
 	@Override
 	public int delete(Uri arg0, String arg1, String[] arg2) {

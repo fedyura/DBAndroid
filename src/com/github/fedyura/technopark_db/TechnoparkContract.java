@@ -1,4 +1,4 @@
-package com.github.fedyura.TechnoparkDB;
+package com.github.fedyura.technopark_db;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -29,7 +29,7 @@ public final class TechnoparkContract {
 				TPStudent.COLUMN_NAME_INITIAL + TEXT_TYPE + COMMA_SEP +
 				TPStudent.COLUMN_NAME_NUM_SEMESTER + INTEGER_TYPE + COMMA_SEP +
 				TPStudent.COLUMN_NAME_TELEPHONE + TEXT_TYPE + COMMA_SEP +
-				TPStudent.COLUMN_NAME_EMAIL + TEXT_TYPE + COMMA_SEP +
+				TPStudent.COLUMN_NAME_EMAIL + TEXT_TYPE +
 				" )";
 		
 		private static final String SQL_DELETE_STUDENTS = 
@@ -65,7 +65,7 @@ public final class TechnoparkContract {
 				TPDiscipline.COLUMN_NAME_LECTURER_INITIALS + TEXT_TYPE + COMMA_SEP +
 				TPDiscipline.COLUMN_NAME_NUM_SEMESTER + INTEGER_TYPE + COMMA_SEP +
 				TPDiscipline.COLUMN_NAME_LECTURER_TELEPHONE + TEXT_TYPE + COMMA_SEP +
-				TPDiscipline.COLUMN_NAME_LECTURER_EMAIL + TEXT_TYPE + COMMA_SEP + 
+				TPDiscipline.COLUMN_NAME_LECTURER_EMAIL + TEXT_TYPE + 
 				" )";
 		
 		private static final String SQL_DELETE_DISCIPLINES = 
@@ -126,7 +126,7 @@ public final class TechnoparkContract {
 		InsertDataStudents(db, "Варанов С.Р.", 2, "8-926-565-4339", "varanov@yandex.ru");
 		InsertDataStudents(db, "Нахимов А.Р.", 3, "8-916-433-3845", "naximov_ar@mail.ru");
 		
-		InsertDataDiscipline(db, "Web технологии", "Д. Смаль", 1, "8-915-897-4849", "smal.mail.ru");
+		/*InsertDataDiscipline(db, "Web технологии", "Д. Смаль", 1, "8-915-897-4849", "smal.mail.ru");
 		InsertDataDiscipline(db, "C++", "А. Петров", 1, "8-926-685-2940", "petrov.mail.ru");
 		InsertDataDiscipline(db, "Программирование на Java", "В. Чибриков", 2, "8-903-324-0947", "chibrikov.mail.ru");
 	
@@ -142,7 +142,7 @@ public final class TechnoparkContract {
 		InsertDataJournal(db, 4, 3, 4);
 		InsertDataJournal(db, 5, 1, 5);
 		InsertDataJournal(db, 5, 2, 5);
-		InsertDataJournal(db, 5, 3, 4);
+		InsertDataJournal(db, 5, 3, 4);*/
 	}
 	
 	public static void InsertDataStudents(SQLiteDatabase db,

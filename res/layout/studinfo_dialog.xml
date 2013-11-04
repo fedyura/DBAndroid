@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView
+        android:id="@+id/DialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/dialog_title"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+    
+    <TextView
+        android:id="@+id/stInitials"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/DialogTitle"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="10dp"
+        android:text="@string/initials"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/stinitEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stInitials"
+        android:hint="@string/st_edit_init"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp" />
+    
+    <TextView
+        android:id="@+id/stNumSemester"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/stinitEdit"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="10dp"
+        android:text="@string/num_semester"
+        android:textSize="18sp" />
+    
+    <RadioGroup
+        android:id="@+id/num_semester"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stNumSemester"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/first"
+            android:textColor="@android:color/white"/>
+
+        <RadioButton
+            android:id="@+id/second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/second"
+            android:textColor="@android:color/white" />
+        
+        <RadioButton
+            android:id="@+id/third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/third"
+            android:textColor="@android:color/white"/>
+
+        <RadioButton
+            android:id="@+id/forth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/forth"
+            android:textColor="@android:color/white" />
+    </RadioGroup>
+    
+    <TextView
+        android:id="@+id/stTelephone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/num_semester"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="10dp"
+        android:text="@string/telephone"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/sttelEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stTelephone"
+        android:hint="@string/st_edit_tel"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp" />
+    
+    <TextView
+        android:id="@+id/stEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/sttelEdit"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="10dp"
+        android:text="@string/email"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/stemailEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stEmail"
+        android:hint="@string/st_edit_email"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp" />
+    
+</RelativeLayout>

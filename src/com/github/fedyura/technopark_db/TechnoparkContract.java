@@ -124,7 +124,13 @@ public final class TechnoparkContract {
 		InsertDataStudents(db, "Петров А.П.", 1, "8-915-278-4578", "petrov1_i@gmail.com");
 		InsertDataStudents(db, "Сидоров Р.И.", 2, "8-903-321-5738", "sidorov_r@mail.ru");
 		InsertDataStudents(db, "Варанов С.Р.", 2, "8-926-565-4339", "varanov@yandex.ru");
-		InsertDataStudents(db, "Нахимов А.Р.", 3, "8-916-433-3845", "naximov_ar@mail.ru");
+		InsertDataStudents(db, "Нахимов А.Р.", 4, "8-916-433-3845", "naximov_ar@mail.ru");
+		
+		InsertDataStudents(db, "Горбунов С.И.", 1, "8-916-473-4839", "gorb_s2@gmail.com");
+		InsertDataStudents(db, "Мякинин Р.П.", 2, "8-915-704-3955", "myakinin34@gmail.com");
+		InsertDataStudents(db, "Крутов Р.И.", 2, "8-904-384-4930", "kruto_ri@mail.ru");
+		InsertDataStudents(db, "Гаранина А.С.", 4, "8-925-394-0245", "garanina@yandex.ru");
+		InsertDataStudents(db, "Кусов П.Ю.", 4, "8-916-530-5937", "kusov_p@mail.ru");
 		
 		/*InsertDataDiscipline(db, "Web технологии", "Д. Смаль", 1, "8-915-897-4849", "smal.mail.ru");
 		InsertDataDiscipline(db, "C++", "А. Петров", 1, "8-926-685-2940", "petrov.mail.ru");

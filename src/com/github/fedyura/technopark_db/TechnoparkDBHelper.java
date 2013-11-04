@@ -1,12 +1,10 @@
 package com.github.fedyura.technopark_db;
 
-import com.github.fedyura.technopark_db.TechnoparkContract.Journal;
-import com.github.fedyura.technopark_db.TechnoparkContract.TPDiscipline;
-import com.github.fedyura.technopark_db.TechnoparkContract.TPStudent;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.github.fedyura.technopark_db.TechnoparkContract.TPStudent;
 
 
 public class TechnoparkDBHelper extends SQLiteOpenHelper {
@@ -35,7 +33,6 @@ public class TechnoparkDBHelper extends SQLiteOpenHelper {
 		//TPDiscipline.onUpgrade(db, oldVersion, newVersion);
 		//Journal.onUpgrade(db, oldVersion, newVersion);
 		onCreate(db);
-		TechnoparkContract.InsertData(db);
 	}
     
 	public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {

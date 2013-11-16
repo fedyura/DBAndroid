@@ -29,7 +29,9 @@ public final class TechnoparkContract {
 				TPStudent.COLUMN_NAME_INITIAL + TEXT_TYPE + COMMA_SEP +
 				TPStudent.COLUMN_NAME_NUM_SEMESTER + INTEGER_TYPE + COMMA_SEP +
 				TPStudent.COLUMN_NAME_TELEPHONE + TEXT_TYPE + COMMA_SEP +
-				TPStudent.COLUMN_NAME_EMAIL + TEXT_TYPE +
+				TPStudent.COLUMN_NAME_EMAIL + TEXT_TYPE + COMMA_SEP +
+				"FOREIGN KEY (" + TPStudent.COLUMN_NAME_NUM_SEMESTER + ") REFERENCES " +  
+				TPGroup.TABLE_NAME + "(" + TPGroup._ID + ")" +
 				" )";
 		
 		private static final String SQL_DELETE_STUDENTS = 
@@ -46,112 +48,67 @@ public final class TechnoparkContract {
 		}
 	}
 	
-	public static abstract class TPDiscipline implements BaseColumns {
+	public static abstract class TPGroup implements BaseColumns {
 		
-		public static final String TABLE_NAME = "Discipline";
+		public static final String TABLE_NAME = "StudGroup";
 		
-		public static final String COLUMN_NAME_DISCNAME = "name";
-		public static final String COLUMN_NAME_LECTURER_INITIALS = "lectInitials";
-		public static final String COLUMN_NAME_NUM_SEMESTER = "numSemestr";
-		public static final String COLUMN_NAME_LECTURER_TELEPHONE = "lectTelephone";
-		public static final String COLUMN_NAME_LECTURER_EMAIL = "lectEmail";
+		public static final String COLUMN_NAME_GROUPNAME = "name";
+		public static final String COLUMN_NAME_KURATOR_INITIALS = "kurInitials";
+		public static final String COLUMN_NAME_DISCIPLINES = "disciplines";
+		public static final String COLUMN_NAME_KURATOR_TELEPHONE = "kurTelephone";
+		public static final String COLUMN_NAME_KURATOR_EMAIL = "kurEmail";
 		
-		public static final String COLUMN_NAME_NULLABLE = COLUMN_NAME_LECTURER_EMAIL;
+		public static final String COLUMN_NAME_NULLABLE = COLUMN_NAME_KURATOR_EMAIL;
 		
-		private static final String SQL_CREATE_DISCIPLINES =
-				"CREATE TABLE " + TPDiscipline.TABLE_NAME + " (" +
-				TPDiscipline._ID + " INTEGER PRIMARY KEY," +
-				TPDiscipline.COLUMN_NAME_DISCNAME + TEXT_TYPE + COMMA_SEP +
-				TPDiscipline.COLUMN_NAME_LECTURER_INITIALS + TEXT_TYPE + COMMA_SEP +
-				TPDiscipline.COLUMN_NAME_NUM_SEMESTER + INTEGER_TYPE + COMMA_SEP +
-				TPDiscipline.COLUMN_NAME_LECTURER_TELEPHONE + TEXT_TYPE + COMMA_SEP +
-				TPDiscipline.COLUMN_NAME_LECTURER_EMAIL + TEXT_TYPE + 
+		private static final String SQL_CREATE_GROUPS =
+				"CREATE TABLE " + TPGroup.TABLE_NAME + " (" +
+				TPGroup._ID + " INTEGER PRIMARY KEY," +
+				TPGroup.COLUMN_NAME_GROUPNAME + TEXT_TYPE + COMMA_SEP +
+				TPGroup.COLUMN_NAME_KURATOR_INITIALS + TEXT_TYPE + COMMA_SEP +
+				TPGroup.COLUMN_NAME_DISCIPLINES + TEXT_TYPE + COMMA_SEP +
+				TPGroup.COLUMN_NAME_KURATOR_TELEPHONE + TEXT_TYPE + COMMA_SEP +
+				TPGroup.COLUMN_NAME_KURATOR_EMAIL + TEXT_TYPE + 
 				" )";
 		
-		private static final String SQL_DELETE_DISCIPLINES = 
-				"DROP TABLE IF EXISTS " + TPDiscipline.TABLE_NAME;
+		private static final String SQL_DELETE_GROUPS = 
+				"DROP TABLE IF EXISTS " + TPGroup.TABLE_NAME;
 		
 		public static void onCreate(SQLiteDatabase db) {
 			
-			db.execSQL(SQL_CREATE_DISCIPLINES);
+			db.execSQL(SQL_CREATE_GROUPS);
 		}
 		
 		public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			
-			db.execSQL(SQL_DELETE_DISCIPLINES);
-		}
-	}
-	
-	public static abstract class Journal implements BaseColumns {
-		
-		public static final String TABLE_NAME = "Journal";
-		
-		public static final String COLUMN_NAME_STUDENT_ID = "studentId";
-		public static final String COLUMN_NAME_DISCIPLINE_ID = "discId";
-		public static final String COLUMN_NAME_MARK = "exam_mark";
-		
-		public static final String COLUMN_NAME_NULLABLE = COLUMN_NAME_MARK;
-		
-		private static final String SQL_CREATE_JOURNAL =
-				"CREATE TABLE " + Journal.TABLE_NAME + " (" +
-				Journal._ID + " INTEGER PRIMARY KEY," +
-				Journal.COLUMN_NAME_STUDENT_ID + INTEGER_TYPE + COMMA_SEP +
-				Journal.COLUMN_NAME_DISCIPLINE_ID + INTEGER_TYPE + COMMA_SEP +
-				Journal.COLUMN_NAME_MARK + INTEGER_TYPE + COMMA_SEP +
-				"FOREIGN KEY (" + Journal.COLUMN_NAME_STUDENT_ID + ") REFERENCES" +  
-				TPStudent.TABLE_NAME + "(" + TPStudent._ID + ")" +  
-				"FOREIGN KEY (" + Journal.COLUMN_NAME_DISCIPLINE_ID + ") REFERENCES" +  
-				TPDiscipline.TABLE_NAME + "(" + TPDiscipline._ID + ")" +
-				")";
-		
-		private static final String SQL_DELETE_JOURNAL = 
-				"DROP TABLE IF EXISTS " + Journal.TABLE_NAME;
-		
-		public static void onCreate(SQLiteDatabase db) {
-			
-			db.execSQL(SQL_CREATE_JOURNAL);
-		}
-		
-		public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			
-			db.execSQL(SQL_DELETE_JOURNAL);
+			db.execSQL(SQL_DELETE_GROUPS);
 		}
 	}
 	
 	public static void InsertData(SQLiteDatabase db) {
 		
+		InsertDataGroups(db, "АПО-11", "Кузовлев А.И.", "Web; C++; Algorithms",
+						 "8-925-345-8392", "kuzovlev@mail.ru");
+		InsertDataGroups(db, "АПО-21", "Вендов Р.П.", "Java; DB; Frontend",
+				 		 "8-916-844-8204", "r.vendov@gmail.com");
+		InsertDataGroups(db, "АПО-31", "Кисова А.Ю.", "Testing; GUI; Security; Android",
+				 		 "8-903-194-5739", "anna_kisova@yandex.ru");
+		InsertDataGroups(db, "АПО-41", "Купаскин М.Л.", "Management; Web development; Soft Skills",
+				 		 "8-916-294-2495", "ml_kupaskin@mail.ru");
+		
 		InsertDataStudents(db, "Иванов И.И.", 1, "8-916-234-7896", "ivanov_i@mail.ru");
-		InsertDataStudents(db, "Петров А.П.", 1, "8-915-278-4578", "petrov1_i@gmail.com");
+		InsertDataStudents(db, "Петров А.П.", 4, "8-915-278-4578", "petrov1_i@gmail.com");
 		InsertDataStudents(db, "Сидоров Р.И.", 2, "8-903-321-5738", "sidorov_r@mail.ru");
 		InsertDataStudents(db, "Варанов С.Р.", 2, "8-926-565-4339", "varanov@yandex.ru");
-		InsertDataStudents(db, "Нахимов А.Р.", 4, "8-916-433-3845", "naximov_ar@mail.ru");
+		InsertDataStudents(db, "Нахимов А.Р.", 3, "8-916-433-3845", "naximov_ar@mail.ru");
 		
-		InsertDataStudents(db, "Горбунов С.И.", 1, "8-916-473-4839", "gorb_s2@gmail.com");
-		InsertDataStudents(db, "Мякинин Р.П.", 2, "8-915-704-3955", "myakinin34@gmail.com");
+		InsertDataStudents(db, "Горбунов С.И.", 4, "8-916-473-4839", "gorb_s2@gmail.com");
+		InsertDataStudents(db, "Мякинин Р.П.", 1, "8-915-704-3955", "myakinin34@gmail.com");
 		InsertDataStudents(db, "Крутов Р.И.", 2, "8-904-384-4930", "kruto_ri@mail.ru");
-		InsertDataStudents(db, "Гаранина А.С.", 4, "8-925-394-0245", "garanina@yandex.ru");
-		InsertDataStudents(db, "Кусов П.Ю.", 4, "8-916-530-5937", "kusov_p@mail.ru");
-		
-		/*InsertDataDiscipline(db, "Web технологии", "Д. Смаль", 1, "8-915-897-4849", "smal.mail.ru");
-		InsertDataDiscipline(db, "C++", "А. Петров", 1, "8-926-685-2940", "petrov.mail.ru");
-		InsertDataDiscipline(db, "Программирование на Java", "В. Чибриков", 2, "8-903-324-0947", "chibrikov.mail.ru");
-	
-		InsertDataJournal(db, 1, 1, 4);
-		InsertDataJournal(db, 1, 2, 5);
-		InsertDataJournal(db, 2, 1, 4);
-		InsertDataJournal(db, 2, 2, 3);
-		InsertDataJournal(db, 3, 1, 4);
-		InsertDataJournal(db, 3, 2, 4);
-		InsertDataJournal(db, 3, 3, 5);
-		InsertDataJournal(db, 4, 1, 3);
-		InsertDataJournal(db, 4, 2, 3);
-		InsertDataJournal(db, 4, 3, 4);
-		InsertDataJournal(db, 5, 1, 5);
-		InsertDataJournal(db, 5, 2, 5);
-		InsertDataJournal(db, 5, 3, 4);*/
+		InsertDataStudents(db, "Гаранина А.С.", 3, "8-925-394-0245", "garanina@yandex.ru");
+		InsertDataStudents(db, "Кусов П.Ю.", 3, "8-916-530-5937", "kusov_p@mail.ru");
 	}
 	
-	public static void InsertDataStudents(SQLiteDatabase db,
+	public static void InsertDataStudents(SQLiteDatabase db, 
 		String initials, int numSemester, String telephone, String email) {
 		
 		ContentValues values = new ContentValues();
@@ -167,35 +124,20 @@ public final class TechnoparkContract {
 		    values);
 	}
 	
-	public static void InsertDataDiscipline(SQLiteDatabase db, String name,
-		String lectInitials, int numSemester, String lectTelephone, String lectEmail) {
+	public static void InsertDataGroups(SQLiteDatabase db, String name,
+		String kurInitials, String disciplines, String kurTelephone, String kurEmail) {
 			
 		ContentValues values = new ContentValues();
-		values.put(TPDiscipline.COLUMN_NAME_DISCNAME, name);
-		values.put(TPDiscipline.COLUMN_NAME_LECTURER_INITIALS, lectInitials);
-		values.put(TPDiscipline.COLUMN_NAME_NUM_SEMESTER, numSemester);
-		values.put(TPDiscipline.COLUMN_NAME_LECTURER_TELEPHONE, lectTelephone);
-		values.put(TPDiscipline.COLUMN_NAME_LECTURER_EMAIL, lectEmail);
+		values.put(TPGroup.COLUMN_NAME_GROUPNAME, name);
+		values.put(TPGroup.COLUMN_NAME_KURATOR_INITIALS, kurInitials);
+		values.put(TPGroup.COLUMN_NAME_DISCIPLINES, disciplines);
+		values.put(TPGroup.COLUMN_NAME_KURATOR_TELEPHONE, kurTelephone);
+		values.put(TPGroup.COLUMN_NAME_KURATOR_EMAIL, kurEmail);
 			
 		long newRowId;
 		newRowId = db.insert(
-			TPDiscipline.TABLE_NAME,
-			TPDiscipline.COLUMN_NAME_NULLABLE,
-		    values);
-	}
-	
-	public static void InsertDataJournal(SQLiteDatabase db,
-		int studentId, int disciplineId, int mark) {
-			
-		ContentValues values = new ContentValues();
-		values.put(Journal.COLUMN_NAME_STUDENT_ID, studentId);
-		values.put(Journal.COLUMN_NAME_DISCIPLINE_ID, disciplineId);
-		values.put(Journal.COLUMN_NAME_MARK, mark);
-			
-		long newRowId;
-		newRowId = db.insert(
-			Journal.TABLE_NAME,
-			Journal.COLUMN_NAME_NULLABLE,
+			TPGroup.TABLE_NAME,
+			TPGroup.COLUMN_NAME_NULLABLE,
 		    values);
 	}
 }

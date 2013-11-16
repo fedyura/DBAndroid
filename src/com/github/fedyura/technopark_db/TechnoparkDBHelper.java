@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.github.fedyura.technopark_db.TechnoparkContract.TPGroup;
 import com.github.fedyura.technopark_db.TechnoparkContract.TPStudent;
 
 
@@ -20,6 +21,7 @@ public class TechnoparkDBHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		
+		TPGroup.onCreate(db);
 		TPStudent.onCreate(db);
 		//TPDiscipline.onCreate(db);
 		//Journal.onCreate(db);
@@ -29,6 +31,7 @@ public class TechnoparkDBHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		
+		TPGroup.onUpgrade(db, oldVersion, newVersion);
 		TPStudent.onUpgrade(db, oldVersion, newVersion);
 		//TPDiscipline.onUpgrade(db, oldVersion, newVersion);
 		//Journal.onUpgrade(db, oldVersion, newVersion);

@@ -15,12 +15,12 @@ public class CustomContentProvider extends ContentProvider {
 	
 	//user for uri
 	public static final String AUTHORITY = "com.github.fedyura.technopark_db.CustomContentProvider";
-	private static final int STUDENTS = 0, DISCIPLINES = 1;
+	private static final int STUDENTS = 0, GROUPS = 1;
 	
 	private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 	static {
 	    uriMatcher.addURI(AUTHORITY, TechnoparkContract.TPStudent.TABLE_NAME, STUDENTS);
-	    uriMatcher.addURI(AUTHORITY, TechnoparkContract.TPDiscipline.TABLE_NAME, DISCIPLINES);
+	    uriMatcher.addURI(AUTHORITY, TechnoparkContract.TPGroup.TABLE_NAME, GROUPS);
 	  }
 	
 	@Override
@@ -56,8 +56,8 @@ public class CustomContentProvider extends ContentProvider {
 
         int uriType = uriMatcher.match(uri);
 		switch (uriType) {    
-        case DISCIPLINES:
-                tableName = TechnoparkContract.TPDiscipline.TABLE_NAME;
+        case GROUPS:
+                tableName = TechnoparkContract.TPGroup.TABLE_NAME;
                 break;
         case STUDENTS:
                 tableName = TechnoparkContract.TPStudent.TABLE_NAME;
@@ -68,7 +68,7 @@ public class CustomContentProvider extends ContentProvider {
 
         SQLiteDatabase db = TPDBHelper.getReadableDatabase();
         Cursor c = db.query(tableName, projection, selection, selectionArgs, null, null, sortOrder);
-
+        
         c.setNotificationUri(getContext().getContentResolver(), uri);
         return c;
         }
@@ -82,8 +82,8 @@ public class CustomContentProvider extends ContentProvider {
         case STUDENTS:
                 count = db.update(TechnoparkContract.TPStudent.TABLE_NAME, values, selection, selectionArgs);
                 break;
-        case DISCIPLINES:
-                count = db.update(TechnoparkContract.TPDiscipline.TABLE_NAME, values, selection, selectionArgs);
+        case GROUPS:
+                count = db.update(TechnoparkContract.TPGroup.TABLE_NAME, values, selection, selectionArgs);
                 break;
         default:
                 throw new IllegalArgumentException("Unknown URI " + uri);

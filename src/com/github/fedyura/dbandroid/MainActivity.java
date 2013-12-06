@@ -65,31 +65,7 @@ public class MainActivity extends FragmentActivity
 	    		
 	    		return true;
 	    	}
-	    	
 	    });
-	    
-	    /*listView.setOnItemClickListener(new OnItemClickListener() {
-	        
-	    	public void onItemClick(AdapterView<?> parent, View view,
-	        						int position, long id) {
-	          
-	    		Cursor cursor = (Cursor) ((StudentListAdapter)parent.getAdapter()).getItem(position);
-                
-	    		int _id = cursor.getInt(cursor.getColumnIndex(TPStudent._ID));
-                String initials = cursor.getString(cursor.getColumnIndex(TPStudent.COLUMN_NAME_INITIAL));
-                int num_semester = cursor.getInt(cursor.getColumnIndex(TPStudent.COLUMN_NAME_NUM_SEMESTER));
-                String telephone = cursor.getString(cursor.getColumnIndex(TPStudent.COLUMN_NAME_TELEPHONE));
-                String email = cursor.getString(cursor.getColumnIndex(TPStudent.COLUMN_NAME_EMAIL));
-                
-	    		Bundle bundle = new Bundle();
-	    		bundle.putParcelable(STUDENT_INFO, new Student(_id, initials, num_semester, telephone, email));
-	    		
-	    		DialogFragment dialog = new StudentsDialog();
-	    		
-	    		dialog.setArguments(bundle);
-	            dialog.show(getSupportFragmentManager(), "SettingsDialog");
-	    	}
-	    });*/
 	}
 	
 	@Override
